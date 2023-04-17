@@ -266,7 +266,7 @@ impl Palette for PaletteTurbo {
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let width = PaletteTurbo::COLORS.len();
-    let root_drawing_area = BitMapBackend::new("turbo-heatmap.png", (600, 200)).into_drawing_area();
+    let root_drawing_area = BitMapBackend::new("turbo-heatmap.png", (600, 100)).into_drawing_area();
     let child_drawing_areas = root_drawing_area.split_evenly((1, width));
 
     for (idx, area) in child_drawing_areas.into_iter().enumerate() {
