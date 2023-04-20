@@ -273,11 +273,10 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     let child_drawing_areas = root_drawing_area.split_evenly((1, WIDTH as usize));
 
     let pal_len = PaletteTurbo::COLORS.len() as f64;
-    for (area, idx) in child_drawing_areas
-        .into_iter()
-        .zip((0..WIDTH as usize).map(|x| x as f64))
-    {
-        area.fill(&PaletteTurbo::pick(((idx / WIDTH) * pal_len) as usize))?;
+    for (idx, area) in child_drawing_areas.iter().enumerate() {
+        area.fill(&PaletteTurbo::pick(
+            ((idx as f64 / WIDTH) * pal_len) as usize,
+        ))?;
     }
     root_drawing_area.present()?;
     Ok(())
