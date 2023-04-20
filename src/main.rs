@@ -265,12 +265,19 @@ impl Palette for PaletteTurbo {
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let width = PaletteTurbo::COLORS.len();
-    let root_drawing_area = BitMapBackend::new("turbo-heatmap.png", (600, 100)).into_drawing_area();
-    let child_drawing_areas = root_drawing_area.split_evenly((1, width));
+    const WIDTH: f64 = 600.0;
+    const HEIGHT: u32 = 100;
 
-    for (idx, area) in child_drawing_areas.into_iter().enumerate() {
-        area.fill(&PaletteTurbo::pick(idx))?;
+    let root_drawing_area =
+        BitMapBackend::new("turbo-heatmap.png", (WIDTH as u32, HEIGHT)).into_drawing_area();
+    let child_drawing_areas = root_drawing_area.split_evenly((1, WIDTH as usize));
+
+    let pal_len = PaletteTurbo::COLORS.len() as f64;
+    for (area, idx) in child_drawing_areas
+        .into_iter()
+        .zip((0..WIDTH as usize).map(|x| x as f64))
+    {
+        area.fill(&PaletteTurbo::pick(((idx / WIDTH) * pal_len) as usize))?;
     }
     root_drawing_area.present()?;
     Ok(())
