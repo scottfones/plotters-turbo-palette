@@ -19,9 +19,9 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     ];
 
     for name in palettes {
-        let filename = format!("heatmap-{}.svg", &name);
+        let filename = format!("heatmap-{}.png", &name);
         let root_drawing_area =
-            SVGBackend::new(&filename, (WIDTH as u32, HEIGHT)).into_drawing_area();
+            BitMapBackend::new(&filename, (WIDTH as u32, HEIGHT)).into_drawing_area();
         let child_drawing_areas = root_drawing_area.split_evenly((1, WIDTH as usize));
 
         for (idx, area) in child_drawing_areas.iter().enumerate() {
