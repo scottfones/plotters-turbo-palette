@@ -44,7 +44,7 @@ A collection of color ramps for [plotters.rs](https://github.com/plotters-rs/plo
 
 - 1024 Colors
 
-## [Turbo](https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html).
+## [Turbo](https://ai.googleblog.com/2019/08/turbo-improved-rainbow-colormap-for.html)
 
 ![turbo color ramp](./heatmap-turbo.png)
 
