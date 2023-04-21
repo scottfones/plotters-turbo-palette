@@ -1,6 +1,7 @@
 use plotters::prelude::*;
 
-mod custom_palettes;
+mod palettes_1024;
+mod palettes_256;
 
 enum CustomPalette {
     BentCoolWarm,
@@ -56,28 +57,28 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
             let color_code = ((idx as f64 / WIDTH) * 1024.0) as usize;
             match name {
                 BentCoolWarm => {
-                    area.fill(&custom_palettes::PaletteBentCoolWarm1024::pick(color_code))?
+                    area.fill(&palettes_1024::PaletteBentCoolWarm1024::pick(color_code))?
                 }
 
-                BlackBody => area.fill(&custom_palettes::PaletteBlackBody1024::pick(color_code))?,
+                BlackBody => area.fill(&palettes_1024::PaletteBlackBody1024::pick(color_code))?,
 
                 ExtendedKindlmann => area.fill(
-                    &custom_palettes::PaletteExtendedKindlmann1024::pick(color_code),
+                    &palettes_1024::PaletteExtendedKindlmann1024::pick(color_code),
                 )?,
 
-                Inferno => area.fill(&custom_palettes::PaletteInferno1024::pick(color_code))?,
+                Inferno => area.fill(&palettes_1024::PaletteInferno1024::pick(color_code))?,
 
-                Kindlmann => area.fill(&custom_palettes::PaletteKindlmann1024::pick(color_code))?,
+                Kindlmann => area.fill(&palettes_1024::PaletteKindlmann1024::pick(color_code))?,
 
-                Plasma => area.fill(&custom_palettes::PalettePlasma1024::pick(color_code))?,
+                Plasma => area.fill(&palettes_1024::PalettePlasma1024::pick(color_code))?,
 
-                SmoothCoolWarm => area.fill(&custom_palettes::PaletteSmoothCoolWarm1024::pick(
-                    color_code,
-                ))?,
+                SmoothCoolWarm => {
+                    area.fill(&palettes_1024::PaletteSmoothCoolWarm1024::pick(color_code))?
+                }
 
-                Turbo => area.fill(&custom_palettes::PaletteTurbo256::pick(color_code / 4))?,
+                Turbo => area.fill(&palettes_256::PaletteTurbo256::pick(color_code / 4))?,
 
-                Viridis => area.fill(&custom_palettes::PaletteViridis1024::pick(color_code))?,
+                Viridis => area.fill(&palettes_1024::PaletteViridis1024::pick(color_code))?,
             };
         }
         root_drawing_area.present()?;
