@@ -1,5 +1,5 @@
 [package]
-name = "plotters-turbo-palette"
+name = "plotters-viz-palettes"
 version = "0.1.0"
 edition = "2021"
 
