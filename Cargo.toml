@@ -1,5 +1,5 @@
 [package]
-name = "plotters-viz-palettes"
+name = "plotters_viz_palettes"
 version = "0.1.0"
 edition = "2021"
 
